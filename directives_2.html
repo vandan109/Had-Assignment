@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    
+<title>Directives</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    
+<body>
+    
+<div ng-app='myApp' ng-init="names=[
+{name:'Jani',country:'Norway'},
+{name:'Hege',country:'Sweden'},
+{name:'Kai',country:'Denmark'}]">
+<h2>Few built-in directives are  ng-init, ng-app, ng-model, ng-repeat, ng-bind</h2>
+<ul>
+        <li ng-repeat="x in names">
+            {{ x.name + ', ' + x.country }}
+        </li>
+</ul>
+    Quantity: <input type="number" ng-model="quantity">
+    <br><br>
+    Costs: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" ng-model="price"> <br>
+    Quantity:
+    <div ng-bind="quantity" style="display:inline;"></div> <br>
+    Cost per unit:
+    <div ng-bind="price" style="display:inline;"></div>
+    <p>Total : {{ quantity * price }}$</p>
+    <h2>In addition to all the built-in AngularJS directives, you can create your own directives.</h2>
+    <custom-directive></custom-directive>
+    <script>
+        const app = angular.module("myApp", []);
+        app.directive("customDirective", function() {
+            return {
+                template : "<p style='font-style: arial;font-size: 30px;text-decoration: underline'>Made by a custom directive</p>"
+            };
+        });
+    </script>
+</div>
+</body>
+</html>
